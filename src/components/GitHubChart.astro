@@ -1,0 +1,28 @@
+---
+import { GLOBAL } from "../lib/config";
+
+interface Props {
+  username?: string;
+  className?: string;
+}
+
+const { username = GLOBAL.username.toLowerCase(), className = "" } = Astro.props;
+
+const lightChartUrl = `https://ghchart.xqsit94.in/light:10b981/${username}`;
+const darkChartUrl = `https://ghchart.xqsit94.in/dark:10b981/${username}`;
+---
+
+<div class={`border xq-border rounded-lg ${className}`}>
+  <img
+    src={lightChartUrl}
+    alt="GitHub Contribution Chart"
+    class="w-full max-w-full h-auto block dark:hidden"
+    loading="lazy"
+  />
+  <img
+    src={darkChartUrl}
+    alt="GitHub Contribution Chart"
+    class="w-full max-w-full h-auto hidden dark:block"
+    loading="lazy"
+  />
+</div>

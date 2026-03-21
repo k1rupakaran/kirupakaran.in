@@ -1,0 +1,90 @@
+---
+import "../styles/app.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { GLOBAL } from "../lib/config";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogType?: string;
+}
+
+const { 
+  title = `${GLOBAL.name} | ${GLOBAL.tagline}`,
+  description = GLOBAL.description,
+  keywords = "Full Stack Engineer, Software Developer, Go, Laravel, Vue, React, Astro, Web Development, Chennai, India",
+  ogType = "website"
+} = Astro.props;
+
+const pageTitle = title.includes(GLOBAL.name) ? title : `${title} | ${GLOBAL.name}`;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        
+        <title>{pageTitle}</title>
+        <meta name="title" content={pageTitle} />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={GLOBAL.name} />
+        <link rel="canonical" href={canonicalURL} />
+        
+        <meta property="og:type" content={ogType} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:site_name" content={`${GLOBAL.name} - ${GLOBAL.tagline}`} />
+        
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content={canonicalURL} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+        
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+        <meta name="theme-color" content="#10b981" />
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": GLOBAL.name,
+            "jobTitle": GLOBAL.tagline,
+            "description": GLOBAL.description,
+            "url": canonicalURL,
+            "sameAs": [
+              GLOBAL.social.github,
+              GLOBAL.social.linkedin,
+              GLOBAL.social.peerlist
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Chennai",
+              "addressCountry": "India"
+            }
+          })}></script>
+    </head>
+    <body class="font-noto xq-bg xq-text">
+        <div class="flex flex-col min-h-screen max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+            <Header />
+            <main class="flex-1 flex">
+                <slot />
+            </main>
+            <Footer />
+
+            <div class="fixed z-50 bottom-5 right-5 md:bottom-8 md:right-8">
+                <div class="group relative rounded-full border xq-border bg-white/80 dark:bg-neutral-900/70 shadow-lg backdrop-blur px-1.5 py-1.5 xq-transition hover:shadow-xl hover:scale-105">
+                    <ThemeToggle />
+                    <span class="pointer-events-none absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition duration-200 text-xs md:text-sm border xq-border rounded bg-white dark:bg-neutral-900 xq-text shadow px-2 py-1 whitespace-nowrap">Toggle theme (T)</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

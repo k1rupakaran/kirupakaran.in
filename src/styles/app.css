@@ -1,0 +1,84 @@
+@import "@fontsource/noto-sans-mono/300.css";
+@import "@fontsource/noto-sans-mono/400.css";
+@import "@fontsource/noto-sans-mono/500.css";
+@import "@fontsource/noto-sans-mono/600.css";
+@import "@fontsource/noto-sans-mono/700.css";
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-noto: "Noto Sans Mono", monospace;
+    --color-xq-dark: oklch(0.18 0 0);
+    --color-xq-light: oklch(0.94 0.0153 90.24);
+    --color-xq-dark-muted: var(--color-neutral-600);
+    --color-xq-light-muted: var(--color-neutral-400);
+    --color-xq-border-light: var(--color-neutral-300);
+    --color-xq-border-dark: var(--color-neutral-800);
+    --color-xq-accent-light: var(--color-emerald-700);
+    --color-xq-accent-light-muted: var(--color-emerald-600);
+    --color-xq-accent-dark: var(--color-emerald-300);
+    --color-xq-accent-dark-muted: var(--color-emerald-400);
+}
+
+@layer base {
+    :root {
+        --xq-transition-duration: 0.15s;
+        --xq-transition-timing-function: ease-in-out;
+    }
+
+    .xq-transition {
+        @media (prefers-reduced-motion: no-preference) {
+            transition:
+                background-color var(--xq-transition-duration)
+                    var(--xq-transition-timing-function),
+                color var(--xq-transition-duration)
+                    var(--xq-transition-timing-function),
+                fill var(--xq-transition-duration)
+                    var(--xq-transition-timing-function),
+                border-color var(--xq-transition-duration)
+                    var(--xq-transition-timing-function),
+                transform var(--xq-transition-duration)
+                    var(--xq-transition-timing-function);
+        }
+    }
+
+    .xq-bg {
+        background-color: var(--color-xq-light);
+        :where(.dark, .dark *) & {
+            background-color: var(--color-xq-dark);
+        }
+    }
+
+    .xq-text {
+        color: var(--color-xq-dark);
+        :where(.dark, .dark *) & {
+            color: var(--color-xq-light);
+        }
+    }
+
+    .xq-border {
+        border-color: var(--color-xq-border-light);
+        :where(.dark, .dark *) & {
+            border-color: var(--color-xq-border-dark);
+        }
+    }
+}
+
+@utility xq-accent {
+    color: var(--color-xq-accent-light);
+    @variant dark {
+        color: var(--color-xq-accent-dark);
+    }
+}
+
+@utility xq-accent-muted {
+    color: var(--color-xq-accent-light-muted);
+    @variant dark {
+        color: var(--color-xq-accent-dark-muted);
+    }
+}
+
+@utility font-noto {
+    font-family: var(--font-noto);
+}

@@ -1,0 +1,33 @@
+---
+import { GLOBAL } from "../lib/config";
+---
+
+<header>
+    <nav class="relative flex items-center justify-between py-4 md:py-8">
+        <a href="/" class="text-lg md:text-xl font-semibold tracking-wider">{GLOBAL.username}</a>
+
+        <div class="hidden md:flex items-center gap-6 md:gap-8">
+            <a href="/about" class="hover:underline hover:xq-accent text-sm md:text-base font-semibold">About</a>
+            <a href="/expertise" class="hover:underline hover:xq-accent text-sm md:text-base font-semibold">Expertise</a>
+            <a href="/experience" class="hover:underline hover:xq-accent text-sm md:text-base font-semibold">Experience</a>
+            <a href="/contact" class="hover:underline hover:xq-accent text-sm md:text-base font-semibold">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-3 md:hidden">
+            <details>
+                <summary class="list-none xq-transition p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 flex items-center gap-2 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                    <span class="sr-only">Menu</span>
+                </summary>
+                <div class="absolute left-0 right-0 top-full z-40 bg-white dark:bg-neutral-900 border-t xq-border xq-transition">
+                    <div class="px-4 py-4 flex flex-col gap-3">
+                        <a href="/about" class="py-1 font-semibold xq-text hover:xq-accent">About</a>
+                        <a href="/expertise" class="py-1 font-semibold xq-text hover:xq-accent">Expertise</a>
+                        <a href="/experience" class="py-1 font-semibold xq-text hover:xq-accent">Experience</a>
+                        <a href="/contact" class="py-1 font-semibold xq-text hover:xq-accent">Contact</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </nav>
+</header>

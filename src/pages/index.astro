@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { GLOBAL } from "../lib/config";
+---
+
+<Layout
+  title={`${GLOBAL.name} | ${GLOBAL.tagline}`}
+  description={GLOBAL.description}
+  keywords="Manikandan B, Full Stack Engineer, Software Engineer Chennai, Go Developer, Laravel Developer, Vue.js Developer, React Developer, Web Developer India, Software Engineer Portfolio, Chennai Developer"
+  ogType="website"
+>
+    <div class="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
+        <div class="text-center space-y-5">
+            <h1 class="text-3xl md:text-5xl font-semibold tracking-wider">
+                {GLOBAL.name}
+            </h1>
+            <p class="text-lg md:text-xl font-normal tracking-wide">
+                {GLOBAL.tagline}
+            </p>
+            <div
+                class="flex flex-wrap items-center justify-center gap-5 md:gap-10 mt-6 md:mt-10 text-base md:text-lg"
+            >
+                <a
+                    href={`mailto:${GLOBAL.social.email}`}
+                    class="hover:underline hover:xq-accent"
+                >
+                    Email
+                </a>
+                <a
+                    href={GLOBAL.social.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline hover:xq-accent"
+                >
+                    GitHub
+                </a>
+                <a
+                    href={GLOBAL.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline hover:xq-accent"
+                >
+                    LinkedIn
+                </a>
+                <a
+                    href={GLOBAL.social.peerlist}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline hover:xq-accent"
+                >
+                    Peerlist
+                </a>
+            </div>
+        </div>
+    </div>
+</Layout>

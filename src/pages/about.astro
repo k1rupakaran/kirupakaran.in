@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { GLOBAL } from "../lib/config";
+const started = new Date("2016-07-01T00:00:00Z");
+const years = Math.max(1, Math.floor((Date.now() - started.getTime()) / (1000 * 60 * 60 * 24 * 365)));
+---
+
+<Layout
+  title="About Me"
+  description="Full-Stack Engineer with 8+ years experience building scalable web applications using Go, Laravel, Vue, React. Currently at Sirine.ai B.V in Chennai, India."
+  keywords="Manikandan B, Full Stack Engineer, Go Developer, Laravel Developer, Vue.js, React, Software Engineer Chennai, Web Developer India, Backend Developer, Frontend Developer"
+>
+  <section class="w-full py-10 space-y-8">
+    <div>
+      <h1 class="text-3xl md:text-4xl font-semibold tracking-wider mb-4">About Me</h1>
+      <p class="text-lg md:text-xl xq-accent-muted leading-relaxed">
+        Full-Stack Engineer building reliable, scalable web applications
+      </p>
+    </div>
+
+    <div class="prose prose-lg max-w-none space-y-6">
+      <p class="text-base md:text-lg leading-relaxed">
+        I'm Manikandan B, a passionate full-stack engineer with {years} years of experience crafting
+        digital solutions from Chennai, India. I specialize in building reliable, fast, and maintainable
+        web applications that solve real-world problems.
+      </p>
+
+      <p class="text-base md:text-lg leading-relaxed">
+        My expertise spans across backend development with <strong>Go</strong> and <strong>Laravel (PHP)</strong>,
+        frontend frameworks like <strong>Vue</strong> and <strong>React</strong>, and modern tooling including
+        <strong>Astro</strong> and <strong>Tailwind CSS</strong>. I believe in writing clean, well-tested code
+        and creating exceptional developer experiences.
+      </p>
+
+      <p class="text-base md:text-lg leading-relaxed">
+        Currently, I work as a Full Stack Engineer at Sirine.ai B.V, where I build internal tools and
+        services that power innovative AI solutions. Previously, I spent over 3 years at Oreala B.V,
+        designing and shipping production systems including invoice builders and performance optimization tools.
+      </p>
+
+      <p class="text-base md:text-lg leading-relaxed">
+        When I'm not coding, you'll find me contributing to open source projects, exploring new technologies,
+        or sharing knowledge through my personal projects. I'm particularly interested in developer experience,
+        performance optimization, and turning complex problems into elegant solutions.
+      </p>
+
+      <div class="mt-8 p-6 border xq-border rounded-lg bg-gray-50/50 dark:bg-gray-900/20">
+        <h3 class="text-lg font-semibold mb-2 xq-accent">Quick Facts</h3>
+        <ul class="space-y-2 text-sm md:text-base">
+          <li><strong>Location:</strong> Chennai, India</li>
+          <li><strong>Experience:</strong> {years} years in software development</li>
+          <li><strong>Education:</strong> B.E. Computer Science, Madha Engineering College</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
